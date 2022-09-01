@@ -117,7 +117,7 @@ component {
     }
 
     private string function getDriverDirectory( required string baseDirectory ) {
-        return arguments.baseDirectory & "/driver/#getPlatformName()#/";
+        return arguments.baseDirectory & "/driver/";
     }
 
     private string function getPlatformName() {
