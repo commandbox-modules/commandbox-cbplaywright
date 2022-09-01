@@ -1,0 +1,37 @@
+{
+    "name":"CommandBox cbPlaywright",
+    "version":"0.0.0",
+    "location":"forgeboxStorage",
+    "author":"Eric Peterson",
+    "homepage":"https://github.com/commandbox-modules/commandbox-cbplaywright",
+    "documentation":"https://github.com/commandbox-modules/commandbox-cbplaywright",
+    "repository":{
+        "type":"git",
+        "URL":"https://github.com/commandbox-modules/commandbox-cbplaywright"
+    },
+    "bugs":"https://github.com/commandbox-modules/commandbox-cbplaywright/issues",
+    "slug":"commandbox-cbplaywright",
+    "shortDescription":"Support and commands for cbPlaywright",
+    "instructions":"https://github.com/commandbox-modules/commandbox-cbplaywright",
+    "type":"commandbox-modules",
+    "keywords":[
+        "commandbox",
+        "playwright",
+        "cbplaywright",
+        "testing"
+    ],
+    "scripts":{
+        "onRelease":"publish",
+        "postPublish":"!git push && git push --tags",
+        "format":"cfformat run commands/**/*.cfc,models/**/*.cfc,ModuleConfig.cfc --overwrite"
+    },
+    "private":false,
+    "license":[
+        {
+            "type":"MIT",
+            "URL":"https://github.com/commandbox-modules/commandbox-cbplaywright/blob/master/LICENSE"
+        }
+    ],
+    "dependencies":{},
+    "installPaths":{}
+}
