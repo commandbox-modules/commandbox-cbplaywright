@@ -2,4 +2,4 @@
 TASKS.md
 jmimemagic.log
 .env
-driver/
+/driver
