@@ -55,7 +55,7 @@ component {
             }
         }
 
-        var tmpDirectory = arguments.baseDirectory & "tmp/";
+        var tmpDirectory = arguments.baseDirectory & "/tmp/";
 
         directoryCreate( tmpDirectory, true, true );
 
@@ -96,6 +96,9 @@ component {
                 variables.progressBarGeneric.update( percent = ( i / fileCount ) * 100 );
             } );
             job.addLog( "Driver downloaded and extracted successfully." );
+            
+            // delete the temp dir, we don't need it anymore
+            directoryDelete( tmpDirectory, true );
 
             job.complete();
             if ( !isNull( arguments.print ) ) {
