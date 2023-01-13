@@ -18,13 +18,20 @@ component {
             try {
                 cfhttp(
                     url = "https://search.maven.org/solrsearch/select?q=g:com.microsoft.playwright+AND+a:driver-bundle&core=gav&rows=20&wt=json",
-                    encodeURL = false
+                    encodeURL = false,
+                    timeout = 5
                 );
+                // catch non expected status codes
+                if ( cfhttp.status_code != 200 ) {
+                    throw( "Oops! search.maven.org responsed with an unexpected satus code: #cfhttp.status_code#", "UnexpectedStatus" );
+                }
                 var res = deserializeJSON( cfhttp.filecontent ).response;
                 if ( res.numFound <= 0 ) {
                     throw( "No results found for com.microsoft.playwright:driver-bundle" );
                 }
                 arguments.version = res.docs[ 1 ].v;
+            } catch ( UnexpectedStatus e ) {
+                throw( e.message );
             } catch ( any e ) {
                 throw( "Error finding latest version of com.microsoft.playwright:driver-bundle", e );
             }
