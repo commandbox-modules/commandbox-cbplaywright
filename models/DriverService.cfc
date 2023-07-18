@@ -96,7 +96,7 @@ component {
                 variables.progressBarGeneric.update( percent = ( i / fileCount ) * 100 );
             } );
             job.addLog( "Driver downloaded and extracted successfully." );
-            
+
             // delete the temp dir, we don't need it anymore
             directoryDelete( tmpDirectory, true );
 
@@ -123,7 +123,7 @@ component {
 
     public string function getExecutablePath( required string baseDirectory ) {
         var executableName = variables.fs.isWindows() ? "playwright.cmd" : "playwright.sh";
-        return getDriverDirectory( arguments.baseDirectory ) & executableName;
+        return '"' & getDriverDirectory( arguments.baseDirectory ) & executableName & '"';
     }
 
     private string function getDriverDirectory( required string baseDirectory ) {
