@@ -87,6 +87,16 @@ component {
             directoryDelete( tmpUnpackedJar, true );
             fileDelete( tmpJarFileName );
 
+            if ( !fileExists( driverDirectory & "playwright.sh" ) ) {
+                if ( variables.fs.isWindows() ) {
+                    job.addLog( "Adding playwright.bat file..." );
+                    fileCopy( arguments.baseDirectory & "/models/playwright.cmd.template", driverDirectory & "playwright.cmd" );
+                } else {
+                    job.addLog( "Adding playwright.sh file..." );
+                    fileCopy( arguments.baseDirectory & "/models/playwright.sh.template", driverDirectory & "playwright.sh" );
+                }
+            }
+
             job.addLog( "Setting the correct permissions for the driver files..." );
             var files = directoryList( driverDirectory, true );
             var fileCount = files.len();
