@@ -19,7 +19,7 @@ component {
                 cfhttp(
                     url = "https://search.maven.org/solrsearch/select?q=g:com.microsoft.playwright+AND+a:driver-bundle&core=gav&rows=20&wt=json",
                     encodeURL = false,
-                    timeout = 5
+                    timeout = 15
                 );
                 // catch non expected status codes
                 if ( cfhttp.status_code != 200 ) {

@@ -2,10 +2,14 @@ component {
 
     property name="driverService" inject="DriverService@commandbox-cbplaywright";
 
-    function run( string version = "latest", boolean force = false ) {
+    function run(
+        string version = "latest",
+        string directory = expandPath( "/commandbox-cbplaywright" ),
+        boolean force = false
+    ) {
         variables.driverService.installDriver(
             arguments.version,
-            expandPath( "/commandbox-cbplaywright" ),
+            arguments.directory,
             arguments.force,
             print
         );
